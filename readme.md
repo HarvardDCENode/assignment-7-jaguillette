@@ -1,5 +1,5 @@
-# Assignment #7 - Final Project
+# Timeline generator - front-end
 
-The description of this assignment can be found in Canvas at [Assignment #7/Final](https://canvas.harvard.edu/courses/96093/assignments/551421) (Spring 2022)
+This is the Angular frontend for my timeline generator app. It relies on an external API, defined in `src/environments/environment.ts`, for data.
 
-You should build your application in this repo cloned for you in Github Classroom. You'll submit your project and github URLs in Canvas.
+This frontend is currently set up to frame out admin functions, and doesn't render any data. Soon it will be set up to perform CRUD operations via the API on the underlying data, but it currently only performs read opterations.
