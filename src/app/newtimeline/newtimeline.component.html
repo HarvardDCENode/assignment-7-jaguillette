@@ -1,0 +1,29 @@
+<div>
+  <h3>Add a new timeline</h3>
+  <form #newtimelineForm="ngForm">
+    <label for="title">Title: </label>
+    <input
+      required
+      minlength="2"
+      placeholder="title"
+      name="title"
+      class="form-control"
+      [(ngModel)]="timeline"
+      type="text"
+    />
+		<div *ngIf="title.invalid && (title.dirty || title.touched)" class="alert alert-danger">
+			<div *ngIf="title.errors.minlength">
+				Title must be at least 2 characters long
+			</div>
+		</div>
+    <label for="description">Description: </label>
+    <input
+      placeholder="description"
+      name="description"
+      class="form-control"
+      [(ngModel)]="timeline.description"
+      type="text"
+    />
+		<button type="submit" class="btn btn-primary" [disabled]="!newtimelineForm.valid">Save</button>
+  </form>
+</div>

@@ -1,0 +1,41 @@
+<div *ngIf="timeline">
+  <h3>{{ timeline.title }} Details:</h3>
+  <div *ngIf="!editing">
+    <p>Title: {{ timeline.title }}</p>
+    <p>Description: {{ timeline.description }}</p>
+    <!-- <div>
+      <span>Updated: </span>{{ timeline.updatedAt }} | <span>Created: </span
+      >{{ timeline.createdAt }}
+    </div> -->
+    <button class="btn btn-link" (click)="setEditMode(true)">Edit</button>
+  </div>
+  <div *ngIf="editing">
+    <form #form="ngForm" (ngSubmit)="updateTimeline(form.value)">
+      <div class="form-group">
+        <label for="titleField">Title: </label>
+        <input
+          name="titleField"
+          class="form-control"
+          [ngModel]="timeline.title"
+          type="text"
+        />
+        <br />
+        <label for="descField">Description: </label>
+        <input
+          name="descField"
+          class="form-control"
+          [ngModel]="timeline.description"
+          type="text"
+        />
+				<button type="submit">Save</button>
+				<button type="button" (click)="setEditMode(false)">Cancel edit</button>
+				<button type="button" (click)="deleteTimeline()">Delete timeline</button>
+      </div>
+    </form>
+  </div>
+  <div>
+    <button class="btn btn-link" routerLink="/timelines">
+      Back to Timeline list
+    </button>
+  </div>
+</div>

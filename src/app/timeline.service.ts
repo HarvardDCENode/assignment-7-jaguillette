@@ -12,6 +12,10 @@ export class TimelineService {
 
   constructor(private http: HttpClient) {}
 
+  createTimeline(data:any) {
+    return this.http.post(`${this.apiurl}api/timelines`, data);
+  }
+
   listTimelines():Observable<any[]> {
     // List all timelines in database
     return this.http.get<any[]>(`${this.apiurl}api/timelines`);
@@ -24,5 +28,9 @@ export class TimelineService {
 
   updateTimeline(id:string, data:any) {
     return this.http.put(`${this.apiurl}api/timelines/${id}`, data);
+  }
+
+  deleteTimeline(id:string) {
+    return this.http.delete(`${this.apiurl}api/timelines/${id}`);
   }
 }
