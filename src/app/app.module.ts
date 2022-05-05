@@ -9,6 +9,8 @@ import { TimelinesComponent } from "./timelines/timelines.component";
 import { OneTimelineComponent } from "./one-timeline/one-timeline.component";
 import { OneTimelineEventComponent } from "./one-timeline-event/one-timeline-event.component";
 import { TimelinedetailComponent } from "./timelinedetail/timelinedetail.component";
+import { NewtimelineComponent } from "./newtimeline/newtimeline.component";
+import { NewtimelineeventComponent } from "./newtimelineevent/newtimelineevent.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "/timelines", pathMatch: "full" },
@@ -23,6 +25,8 @@ const routes: Routes = [
     OneTimelineComponent,
     OneTimelineEventComponent,
     TimelinedetailComponent,
+    NewtimelineComponent,
+    NewtimelineeventComponent,
   ],
   imports: [
     BrowserModule,

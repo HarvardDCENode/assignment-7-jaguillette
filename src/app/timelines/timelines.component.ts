@@ -20,4 +20,10 @@ export class TimelinesComponent implements OnInit {
       this.timelines = timelines;
     });
   }
+
+  updateTimelineList():void {
+    this.timelineService.listTimelines().subscribe((timelines) => {
+      this.timelines = timelines;
+    })
+  }
 }
