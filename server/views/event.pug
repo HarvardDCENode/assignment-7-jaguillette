@@ -1,0 +1,15 @@
+extends layout
+
+block content
+    h1 #{title}
+    h2 Which options were specified?
+    ul
+        each param, key in theEvent
+            li #{(param) ? "✅" : "❌"} #{key}
+    h2 Formatted date
+    p #{theEvent.formattedDate}
+    if eventErrors
+        h2 Errors in event
+        ul
+            for error in theEvent.eventErrors
+                li= error

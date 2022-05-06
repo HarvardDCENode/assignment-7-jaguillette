@@ -1,0 +1,19 @@
+mixin timelineForm(timeline, instanceNum)
+
+	div(class="timeline-form-" + instanceNum)
+		form(action=(timeline) ? "/timelines/" + timeline._id.toString() : "", method="POST")
+			p
+				label(for="title" + instanceNum) Title: 
+				input(type="text", name="title", id="title" + instanceNum, value=(timeline) ? timeline.title : "")
+
+			p
+				label(for="description" + instanceNum) Description: 
+				input(type="text", name="description", id="description" + instanceNum, value=(timeline) ? timeline.description : "")
+			
+			p
+				input(type="submit", name="submit", id="submit" + instanceNum, value="Submit")
+	
+	if timeline
+		div(class="timeline-form-" + instanceNum + "-delete")
+			form(action=(timeline) ? "/timelines/" + timeline._id.toString() : "", method="POST")
+				input(type="submit", name="delete", id="delete" + instanceNum, value="Delete timeline")

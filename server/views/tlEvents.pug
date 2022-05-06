@@ -1,0 +1,38 @@
+extends layout
+
+block content
+
+	form(action="/tlEvents", method="POST")
+		p
+			label(for="year") Year: 
+			input(type="number", name="year")
+		p
+			label(for="month") Month: 
+			select(name="month")
+				option(value="") --None selected--
+				option(value=0) January
+				option(value=1) February
+				option(value=2) March
+				option(value=3) April
+				option(value=4) May
+				option(value=5) June
+				option(value=6) July
+				option(value=7) August
+				option(value=8) September
+				option(value=9) October
+				option(value=10) November
+				option(value=11) December
+		p
+			label(for="day") Day: 
+			input(type="number", name="day", min=1, max=31)
+		p
+			label(for="hours") Hours: 
+			input(type="number", name="hours", min=0, max=23)
+		p
+			label(for="minutes") Minutes: 
+			input(type="number", name="minutes", min=0, max=59)
+		p
+			label(for="seconds") Seconds: 
+			input(type="number", name="seconds", min=0, max=59)
+		p
+			input(type="submit", value="Create event")

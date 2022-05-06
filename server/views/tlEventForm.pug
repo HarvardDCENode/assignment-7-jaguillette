@@ -1,0 +1,49 @@
+mixin tlEventForm(tlEvent, timeline, instanceNum)
+
+	div(class="tlEvent-form-" + instanceNum)
+		form(action=(tlEvent) ? "/tlEvents/" + tlEvent._id.toString() : "/tlEvents/", method="POST")
+			p
+				label(for="title" + instanceNum) Title: 
+				input(type="text", name="title", id="title" + instanceNum, value=(tlEvent) ? tlEvent.title : "")
+
+			p
+				label(for="description" + instanceNum) Description: 
+				input(type="textarea", name="description", id="description" + instanceNum, value=(tlEvent) ? tlEvent.description : "")
+
+			p
+				label(for="displayDate" + instanceNum) Display date (overrides the display date calculated based on date entered): 
+				input(type="text", name="displayDate", id="displayDate" + instanceNum, value=(tlEvent) ? tlEvent.diaplayDate : "")
+
+			p
+				label(for="year" + instanceNum) Year: 
+				input(type="number", name="year", id="year" + instanceNum, value=(tlEvent) ? tlEvent.year : "")
+
+			p
+				label(for="month" + instanceNum) Month: 
+				input(type="number", name="month", id="month" + instanceNum, value=(tlEvent) ? tlEvent.month : "")
+			
+			p
+				label(for="day" + instanceNum) Day: 
+				input(type="number", name="day", id="day" + instanceNum, value=(tlEvent) ? tlEvent.day : "")
+
+			p
+				label(for="hours" + instanceNum) Hours: 
+				input(type="number", name="hours", id="hours" + instanceNum, value=(tlEvent) ? tlEvent.hours : "")
+
+			p
+				label(for="minutes" + instanceNum) Minutes: 
+				input(type="number", name="minutes", id="minutes" + instanceNum, value=(tlEvent) ? tlEvent.minutes : "")
+
+			p
+				label(for="seconds" + instanceNum) Seconds: 
+				input(type="number", name="seconds", id="seconds" + instanceNum, value=(tlEvent) ? tlEvent.seconds : "")
+
+			input(type="hidden", name="timeline", id="timeline" + instanceNum, value=timeline._id)
+
+			p
+				input(type="submit", name="submit", id="submit" + instanceNum, value="Submit")
+	
+	if tlEvent
+		div(class="tlEvent-form-" + instanceNum + "-delete")
+			form(action=(tlEvent) ? "/tlEvents/" + tlEvent._id.toString() : "/tlEvents/", method="POST")
+				input(type="submit", name="delete", id="delete" + instanceNum, value="Delete tlEvent")

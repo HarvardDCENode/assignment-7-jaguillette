@@ -1,0 +1,24 @@
+extends layout
+
+include timelineForm
+include tlEventForm
+
+block content
+	p
+		a(href="/timelines") Show all timelines
+	h1 #{timeline.title}
+	p #{timeline.description}
+	h2 Edit timeline metadata
+	+timelineForm(timeline, 1)
+
+	if timeline.tlEvents
+		h2 Current Timeline Entries
+		p You can only edit one entry at a time (at least for now). That also means that you can't edit an entry and add a new one at the same time, although you can do any of those things from here.
+		each tlEvent, index in timeline.tlEvents
+			h3= tlEvent.title
+			p= tlEvent.description
+			p Here's a form that should be collapsible in a proper frontend
+			+tlEventForm(tlEvent, timeline, index)
+
+	h2 Add new timeline entry
+	+tlEventForm(null, timeline, "new")

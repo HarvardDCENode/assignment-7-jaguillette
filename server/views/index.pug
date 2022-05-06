@@ -1,0 +1,60 @@
+extends layout
+
+block content
+  h1= title
+  p This application will be built as a timeline generator. For now, you can just enter a date as though you would like to add it to a timeline, and you'll see some validation that your event is properly configured. The feedback will also show what options have been specified on the event, with formatted output showing the degree of specificity entered for the date.
+  .timelines
+    h2 
+      a(href="/timelines") Timelines
+    p There are #{timelinesCount} timelines
+  
+  .test
+    h2 Testing
+    p The API for both the timelines and the timeline events can be tested below. For each, click on the test button. The sections for each operation should update with JSON representations of the results of each operation. Each section has a short description of the expected output.
+
+    h3 Test Timelines API
+    button#test-timelines Test timelines API
+
+    h4 List results
+    p This should show raw JSON representing all timelines in the database, each populated with their associated timeline events.
+    pre#list-timeline-results
+
+    h4 Get one results
+    p This should show JSON representing a single timeline from the database, populated with its associated timeline events.
+    pre#get-one-timeline-results
+
+    h4 Create results
+    p This should show JSON representing a newly-added timeline
+    pre#create-timeline-results
+
+    h4 Update results
+    p This should show the same JSON as above, but with an updated description.
+    pre#update-timeline-results
+
+    h4 Delete results
+    p This should show JSON representing the timeline created above, which has now been deleted.
+    pre#delete-timeline-results
+
+    button#test-tlEvents Test timeline events API
+
+    h4 List results
+    p This should show JSON representing all timeline events in the database
+    pre#list-timeline-event-results
+
+    h4 Get one results
+    p This should show JSON representing a single timeline event already in the database
+    pre#get-one-timeline-event-results
+
+    h4 Create results
+    p This should show JSON representing a new timeline event
+    pre#create-timeline-event-results
+
+    h4 Update results
+    p This should show the same JSON as above, but with an updated description.
+    pre#update-timeline-event-results
+
+    h4 Delete results
+    p This should show the same JSON representing the new timeline event, which has now been deleted.
+    pre#delete-timeline-event-results
+
+  script(src="/js/testAPI.js")

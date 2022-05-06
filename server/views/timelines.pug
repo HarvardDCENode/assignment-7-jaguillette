@@ -1,0 +1,16 @@
+extends layout
+
+include timelineForm
+
+block content
+	p
+		a(href="/") Home
+	h1 Timelines
+	for timeline in allTimelines
+		.timeline
+			h2 
+				a(href="timelines/" + timeline._id) #{timeline.title}
+			p #{timeline.description}
+	h2 Add a new timeline
+	+timelineForm(null)
+		
