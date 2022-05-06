@@ -30,9 +30,10 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(bodyparser.urlencoded({ extended: true }));
 app.use(bodyparser.json());
 
-app.use("/", indexRouter);
-app.use("/tlEvents", tlEventsRouter);
-app.use("/timelines", timelinesRouter);
+app.use('/', express.static('../client/dist/timeline-frontend'));
+// app.use("/", indexRouter);
+// app.use("/tlEvents", tlEventsRouter);
+// app.use("/timelines", timelinesRouter);
 app.use("/api/timelines/", apiTimelinesRouter);
 app.use("/api/tlEvents/", apiTlEventsRouter);
 
