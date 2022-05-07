@@ -1,14 +1,63 @@
 <div class="col">
-	<div class="card">
-		<div class="p-3">
-			<h3>{{oneTimelineEvent.title}}</h3>
-			<p>{{oneTimelineEvent.description}}</p>
-			<p>{{oneTimelineEvent.year}}</p>
-			<p>{{oneTimelineEvent.month}}</p>
-			<p>{{oneTimelineEvent.day}}</p>
-			<p>{{oneTimelineEvent.hours}}</p>
-			<p>{{oneTimelineEvent.minutes}}</p>
-			<p>{{oneTimelineEvent.seconds}}</p>
-		</div>
-	</div>
+  <div class="card">
+    <div class="p-3">
+      <ul>
+        <li>
+          <app-timeline-event-field
+            [timelineEvent]="timelineEvent"
+            field="title"
+          ></app-timeline-event-field>
+        </li>
+        <li>
+          <app-timeline-event-field
+            [timelineEvent]="timelineEvent"
+            field="description"
+          ></app-timeline-event-field>
+        </li>
+        <li>
+          <app-timeline-event-field
+            [timelineEvent]="timelineEvent"
+            field="year"
+          ></app-timeline-event-field>
+        </li>
+        <li>
+          <app-timeline-event-field
+            [timelineEvent]="timelineEvent"
+            field="month"
+          ></app-timeline-event-field>
+        </li>
+        <li>
+          <app-timeline-event-field
+            [timelineEvent]="timelineEvent"
+            field="day"
+          ></app-timeline-event-field>
+        </li>
+        <li>
+          <app-timeline-event-field
+            [timelineEvent]="timelineEvent"
+            field="hours"
+          ></app-timeline-event-field>
+        </li>
+        <li>
+          <app-timeline-event-field
+            [timelineEvent]="timelineEvent"
+            field="minutes"
+          ></app-timeline-event-field>
+        </li>
+        <li>
+          <app-timeline-event-field
+            [timelineEvent]="timelineEvent"
+            field="seconds"
+          ></app-timeline-event-field>
+        </li>
+      </ul>
+      <button
+        type="button"
+        class="btn btn-danger"
+        (click)="deleteTimelineEvent()"
+      >
+        Delete
+      </button>
+    </div>
+  </div>
 </div>

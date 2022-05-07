@@ -3,10 +3,6 @@
   <div *ngIf="!editing">
     <p>Title: {{ timeline.title }}</p>
     <p>Description: {{ timeline.description }}</p>
-    <!-- <div>
-      <span>Updated: </span>{{ timeline.updatedAt }} | <span>Created: </span
-      >{{ timeline.createdAt }}
-    </div> -->
     <button class="btn btn-link" (click)="setEditMode(true)">Edit</button>
   </div>
   <div *ngIf="editing">
@@ -35,7 +31,8 @@
   </div>
   <h4>Timeline Events</h4>
 	<div class="row g-4 py-3 row-cols-1 row-cols-lg-3">
-		<app-one-timeline-event *ngFor="let tlEvent of timeline.tlEvents" [oneTimelineEvent]="tlEvent"></app-one-timeline-event>
+		<app-one-timeline-event *ngFor="let tlEvent of timeline.tlEvents" [timelineEvent]="tlEvent"></app-one-timeline-event>
+    <app-newtimelineevent [timelineId]="timeline._id"></app-newtimelineevent>
 	</div>
   <div>
     <button class="btn btn-link" routerLink="/timelines">

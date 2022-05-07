@@ -1,1 +1,165 @@
-<p>newtimelineevent works!</p>
+<div class="col">
+  <div class="card">
+    <div class="p-3">
+      <h3>Add a new timeline event</h3>
+      <form
+        #newTimelineEventForm="ngForm"
+        (ngSubmit)="save(newTimelineEventForm)"
+      >
+        <label for="title">Title: </label>
+        <input
+          #title="ngModel"
+          type="text"
+          required
+          minlength="2"
+          placeholder="title"
+          name="title"
+          class="form-control"
+          [(ngModel)]="timelineEventTitle"
+        />
+        <div
+          *ngIf="title.invalid && (title.dirty || title.touched)"
+          class="alert alert-danger"
+        >
+          <div>Title must be at least 2 characters long</div>
+        </div>
+
+        <label for="description">Description: </label>
+        <input
+          type="text"
+          placeholder="description"
+          name="description"
+          class="form-control"
+          [(ngModel)]="timelineEventDescription"
+        />
+
+        <label for="year">Year: </label>
+        <input
+          #year="ngModel"
+          type="number"
+          min="-271821"
+          max="275760"
+          required
+          name="year"
+          class="form-control"
+          [(ngModel)]="timelineEventYear"
+        />
+        <div
+          *ngIf="year.invalid && (year.dirty || year.touched)"
+          class="alert alert-danger"
+        >
+          <div *ngIf="year.errors?.['min'] || year.errors?.['max']">
+            Year must be between -271821 and 275760.
+          </div>
+          <div *ngIf="year.errors?.['required']">Year is required.</div>
+        </div>
+
+        <label for="month">Month: </label>
+        <select
+          name="month"
+          #month="ngModel"
+          [(ngModel)]="timelineEventMonth"
+          class="form-control"
+        >
+          <option value="">[ No month selected ]</option>
+          <option value="0">January</option>
+          <option value="1">February</option>
+          <option value="2">March</option>
+          <option value="3">April</option>
+          <option value="4">May</option>
+          <option value="5">June</option>
+          <option value="6">July</option>
+          <option value="7">August</option>
+          <option value="8">September</option>
+          <option value="9">October</option>
+          <option value="10">November</option>
+          <option value="11">December</option>
+        </select>
+
+        <label for="day">Day: </label>
+        <input
+          type="number"
+          #day="ngModel"
+          [(ngModel)]="timelineEventDay"
+          min="1"
+          max="31"
+          name="day"
+          class="form-control"
+        />
+        <div
+          *ngIf="day.invalid && (day.dirty || day.touched)"
+          class="alert alert-danger"
+        >
+					<div *ngIf="day.errors?.['min'] || day.errors?.['max']">
+						Day must be between 1 and 31
+					</div>
+				</div>
+
+        <label for="hours">Hours: </label>
+        <input
+          type="number"
+          #hours="ngModel"
+          [(ngModel)]="timelineEventHours"
+          min="0"
+          max="23"
+          name="hours"
+          class="form-control"
+        />
+        <div
+          *ngIf="hours.invalid && (hours.dirty || hours.touched)"
+          class="alert alert-danger"
+        >
+					<div *ngIf="hours.errors?.['min'] || hours.errors?.['max']">
+						Hours must be between 0 and 23
+					</div>
+				</div>
+
+        <label for="minutes">Minutes: </label>
+        <input
+          type="number"
+          #minutes="ngModel"
+          [(ngModel)]="timelineEventMinutes"
+          min="0"
+          max="59"
+          name="minutes"
+          class="form-control"
+        />
+        <div
+          *ngIf="minutes.invalid && (minutes.dirty || minutes.touched)"
+          class="alert alert-danger"
+        >
+					<div *ngIf="minutes.errors?.['min'] || minutes.errors?.['max']">
+						Minutes must be between 0 and 59
+					</div>
+				</div>
+
+        <label for="seconds">Seconds: </label>
+        <input
+          type="number"
+          #seconds="ngModel"
+          [(ngModel)]="timelineEventSeconds"
+          min="0"
+          max="59"
+          name="seconds"
+          class="form-control"
+        />
+        <div
+          *ngIf="seconds.invalid && (seconds.dirty || seconds.touched)"
+          class="alert alert-danger"
+        >
+					<div *ngIf="seconds.errors?.['min'] || seconds.errors?.['max']">
+						Seconds must be between 0 and 59
+					</div>
+				</div>
+
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="newTimelineEventForm.invalid"
+        >
+          Save
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

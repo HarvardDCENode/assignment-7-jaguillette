@@ -1,0 +1,170 @@
+{{ field | titlecase }}:
+<span *ngIf="!editing"
+  >{{ timelineEvent[field] }}
+  <button type="button" class="btn btn-secondary" (click)="setEditMode(true)">
+    Edit
+  </button></span
+>
+
+<!-- Title and description, no validation -->
+<form
+  *ngIf="editing && (field == 'title' || field == 'description')"
+  #formField="ngForm"
+  (ngSubmit)="updateTimelineEvent(formField.value)"
+>
+  <input
+    type="text"
+    name="{{ field }}"
+    class="form-control"
+    [ngModel]="timelineEvent[field]"
+  />
+	<div class="btn-group" role="group" aria-label="Input control group">
+		<button type="submit" class="btn btn-primary">Save</button>
+		<button type="button" (click)="setEditMode(false)" class="btn btn-secondary">Cancel</button>
+	</div>
+</form>
+
+<!-- Year entry, invalid years are at the edge of JS date support -->
+<form
+  *ngIf="editing && field == 'year'"
+  #formField="ngForm"
+  (ngSubmit)="updateTimelineEvent(formField.value)"
+>
+  <input
+    #year="ngModel"
+    type="number"
+    name="{{ field }}"
+    class="form-control"
+    [ngModel]="timelineEvent[field]"
+    min="-271821"
+    max="275760"
+  />
+
+  <div
+    *ngIf="year.invalid && (year.dirty || year.touched)"
+    class="alert alert-danger"
+  >
+    <div *ngIf="year.errors?.['min']">Year cannot be less than -271821</div>
+    <div *ngIf="year.errors?.['max']">Year cannot be greater than 275760</div>
+  </div>
+	<div class="btn-group" role="group" aria-label="Input control group">
+		<button type="submit" class="btn btn-primary" [disabled]="year.invalid">Save</button>
+		<button type="button" (click)="setEditMode(false)" class="btn btn-secondary">Cancel</button>
+	</div>
+</form>
+
+<!-- Month entry, uses a select to ensure valid data -->
+<form
+  *ngIf="editing && field == 'month'"
+  #formField="ngForm"
+  (ngSubmit)="updateTimelineEvent(formField.value)"
+>
+  <select
+    name="{{ field }}"
+    class="form-control"
+    [ngModel]="timelineEvent[field]"
+  >
+    <option value="">[ None selected ]</option>
+    <option value="0">January</option>
+    <option value="1">February</option>
+    <option value="2">March</option>
+    <option value="3">April</option>
+    <option value="4">May</option>
+    <option value="5">June</option>
+    <option value="6">July</option>
+    <option value="7">August</option>
+    <option value="8">September</option>
+    <option value="9">October</option>
+    <option value="10">November</option>
+    <option value="11">December</option>
+  </select>
+  <div class="btn-group" role="group" aria-label="Input control group">
+		<button type="submit" class="btn btn-primary">Save</button>
+		<button type="button" (click)="setEditMode(false)" class="btn btn-secondary">Cancel</button>
+	</div>
+</form>
+
+<!-- Day entry, valid entries are numbers between 1 and 31 -->
+<form
+  *ngIf="editing && field == 'day'"
+  #formField="ngForm"
+  (ngSubmit)="updateTimelineEvent(formField.value)"
+>
+  <input
+    #day="ngModel"
+    type="number"
+    name="{{ field }}"
+    class="form-control"
+    [ngModel]="timelineEvent[field]"
+    min="1"
+    max="31"
+  />
+  <div
+    *ngIf="day.invalid && (day.dirty || day.touched)"
+    class="alert alert-danger"
+  >
+    <div *ngIf="day.errors?.['min']">Day cannot be less than 1</div>
+    <div *ngIf="day.errors?.['max']">Day cannot be greater than 31</div>
+  </div>
+	<div class="btn-group" role="group" aria-label="Input control group">
+		<button type="submit" class="btn btn-primary" [disabled]="day.invalid">Save</button>
+		<button type="button" (click)="setEditMode(false)" class="btn btn-secondary">Cancel</button>
+	</div>
+</form>
+
+<!-- Hours entry, valid entries are numbers between 0 and 23 -->
+<form
+  *ngIf="editing && field == 'hours'"
+  #formField="ngForm"
+  (ngSubmit)="updateTimelineEvent(formField.value)"
+>
+  <input
+		#hours="ngModel"
+    type="number"
+    name="{{ field }}"
+    class="form-control"
+    [ngModel]="timelineEvent[field]"
+    min="0"
+    max="23"
+  />
+  <div
+    *ngIf="hours.invalid && (hours.dirty || hours.touched)"
+    class="alert alert-danger"
+  >
+    <div *ngIf="hours.errors?.['min']">Hours cannot be less than 0</div>
+    <div *ngIf="hours.errors?.['max']">Hours cannot be greater than 23</div>
+  </div>
+	<div class="btn-group" role="group" aria-label="Input control group">
+		<button type="submit" class="btn btn-primary" [disabled]="hours.invalid">Save</button>
+		<button type="button" (click)="setEditMode(false)" class="btn btn-secondary">Cancel</button>
+	</div>
+</form>
+
+<!-- Entry for minutes and seconds, min value 0, max value 59 -->
+<form
+  *ngIf="editing && (field == 'minutes' || field == 'seconds')"
+  #formField="ngForm"
+  (ngSubmit)="updateTimelineEvent(formField.value)"
+>
+  <input
+		#minsec="ngModel"
+    type="number"
+    name="{{ field }}"
+    class="form-control"
+    [ngModel]="timelineEvent[field]"
+    min="0"
+    max="59"
+  />
+	
+  <div
+    *ngIf="minsec.invalid && (minsec.dirty || minsec.touched)"
+    class="alert alert-danger"
+  >
+    <div *ngIf="minsec.errors?.['min']">{{ field | titlecase }} cannot be less than 0</div>
+    <div *ngIf="minsec.errors?.['max']">{{ field | titlecase }} cannot be greater than 59</div>
+  </div>
+	<div class="btn-group" role="group" aria-label="Input control group">
+		<button type="submit" class="btn btn-primary" [disabled]="minsec.invalid">Save</button>
+		<button type="button" (click)="setEditMode(false)" class="btn btn-secondary">Cancel</button>
+	</div>
+</form>

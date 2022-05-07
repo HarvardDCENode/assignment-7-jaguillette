@@ -12,10 +12,7 @@ export class NewtimelineComponent implements OnInit {
   @Output() newTimeline = new EventEmitter();
 
   // timeline object, bound to the form fields
-  timeline: any = {
-    title: '',
-    description: '',
-  };
+  timeline: any;
 
   constructor(private timelineService: TimelineService) {}
 
@@ -41,7 +38,6 @@ export class NewtimelineComponent implements OnInit {
   }
 
   save(newtimelineForm: any): void {
-    console.log("i did literally anything");
     console.log(newtimelineForm);
     const theNewTimeline = {
       title: newtimelineForm.form.value.title,
