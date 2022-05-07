@@ -9,19 +9,14 @@
       >
         <span class="fs-4">Timeline Generator</span>
       </a>
-      <ul class="nav nav-pills">
-        <li class="nav-item">
-          <a href="#" class="nav-link active">Manage timelines</a>
-        </li>
-      </ul>
     </header>
   </div>
   <h1>Timelines</h1>
   <div>
-    <app-one-timeline
+    <app-timeline-brief
       *ngFor="let tl of timelines"
-      [oneTimeline]="tl"
-    ></app-one-timeline>
+      [timeline]="tl"
+    ></app-timeline-brief>
   </div>
 </div>
 <app-newtimeline (newTimeline)="updateTimelineList()"></app-newtimeline>

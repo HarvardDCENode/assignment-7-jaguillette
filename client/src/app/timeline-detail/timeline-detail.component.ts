@@ -4,10 +4,10 @@ import { TimelineService } from "../timeline.service";
 
 @Component({
   selector: "app-timelinedetail",
-  templateUrl: "./timelinedetail.component.html",
-  styleUrls: ["./timelinedetail.component.css"],
+  templateUrl: "./timeline-detail.component.html",
+  styleUrls: ["./timeline-detail.component.css"],
 })
-export class TimelinedetailComponent implements OnInit {
+export class TimelineDetailComponent implements OnInit {
   timeline: any;
   editing:boolean = false;
 

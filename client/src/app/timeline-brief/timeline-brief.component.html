@@ -1,0 +1,11 @@
+<div>
+	<div></div>
+	<h2>{{timeline.title}}</h2>
+	<p>{{timeline.description}}</p>
+	<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with buttons">
+		<div class="btn-group mr-2" role="group" aria-label="Button group">
+			<button type="button" class="btn btn-primary" routerLink="/timelines/display/{{timeline._id}}">Show timeline</button>
+			<button type="button" class="btn btn-info" routerLink="/timelines/manage/{{timeline._id}}">Timeline details</button>
+		</div>
+	</div>
+</div>

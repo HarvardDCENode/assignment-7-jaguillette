@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { OneTimelineEventComponent } from './one-timeline-event.component';
+import { TimelineBriefComponent } from './timeline-brief.component';
 
-describe('OneTimelineEventComponent', () => {
-  let component: OneTimelineEventComponent;
-  let fixture: ComponentFixture<OneTimelineEventComponent>;
+describe('TimelineBriefComponent', () => {
+  let component: TimelineBriefComponent;
+  let fixture: ComponentFixture<TimelineBriefComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ OneTimelineEventComponent ]
+      declarations: [ TimelineBriefComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(OneTimelineEventComponent);
+    fixture = TestBed.createComponent(TimelineBriefComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
